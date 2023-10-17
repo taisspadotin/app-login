@@ -1,20 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Login } from "./pages/Login";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./themes";
+import { useColorScheme } from "nativewind";
 
-export default function App() {
+const App = (): JSX.Element => {
+  const scheme = useColorScheme();
   return (
-    <View style={styles.container}>
-      <Text></Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={scheme === "dark" ? darkTheme : lightTheme}>
+      <Login />
+    </ThemeProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
