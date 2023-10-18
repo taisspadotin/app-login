@@ -5,15 +5,27 @@ import { Container, Label, PopularTopics } from "./styles";
 import { FlatList } from "react-native";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
+import { dataAPI } from "../../api";
+import { IDataHelpers } from "../../types/helpCenter";
 
 const pageSize = 10;
 
 export const HelpCenter = (): JSX.Element => {
   const theme = useTheme();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IDataHelpers[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchedValue, setSearchedValue] = useState("");
+
+  useEffect(() => {
+    dataAPI
+      .get<IDataHelpers[]>("/posts")
+      .then((response) => {
+        setData(response?.data);
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
+  }, []);
 
   const dataFiltered = useMemo(() => {
     const startIndex = (currentPage - 1) * pageSize;
@@ -29,23 +41,11 @@ export const HelpCenter = (): JSX.Element => {
     setCurrentPage(currentPage + 1);
   };
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        setData(response?.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.warn(error);
-        setIsLoading(false);
-      });
-  }, []);
-
   return (
     <Container>
       <Label>Como podemos lhe ajudar?</Label>
       <Input
+        testId="input-search"
         marginTop={5}
         value={searchedValue}
         onChange={setSearchedValue}
@@ -60,6 +60,7 @@ export const HelpCenter = (): JSX.Element => {
           minHeight={200}
           justifyContent="center"
           alignItems="center"
+          testID="loading-content"
         >
           <ActivityIndicator size="large" color={theme.mainColor.primary} />
         </FlexContainer>

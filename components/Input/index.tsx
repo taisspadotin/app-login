@@ -14,6 +14,7 @@ interface IInput {
   iconName?: string;
   onClickIcon?: () => void;
   iconIsLeft?: boolean;
+  testId?: string;
 }
 
 export const Input = ({
@@ -28,6 +29,7 @@ export const Input = ({
   iconName,
   onClickIcon,
   iconIsLeft,
+  testId,
 }: IInput): JSX.Element => {
   const theme = useTheme();
 
@@ -51,6 +53,7 @@ export const Input = ({
         </IconContent>
       )}
       <TextInput
+        testID={testId}
         marginBottom={!!error ? 0 : marginBottom}
         marginTop={marginTop}
         secureTextEntry={secureTextEntry}

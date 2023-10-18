@@ -60,6 +60,7 @@ export const Login = (): JSX.Element => {
         <FlexContainer>
           <Input
             label="Usuário"
+            testId="user-input"
             value={userName}
             onChange={setUserName}
             marginBottom={10}
@@ -68,6 +69,7 @@ export const Login = (): JSX.Element => {
           <Input
             label="Senha"
             value={password}
+            testId="password-input"
             onChange={setPassword}
             secureTextEntry={!viewPassword}
             marginBottom={10}
