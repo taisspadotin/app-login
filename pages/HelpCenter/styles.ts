@@ -11,3 +11,10 @@ export const Label = styled.Text`
   color: ${({ theme }) => theme.fontsColor.primary};
   font-size: 18px;
 `;
+
+export const PopularTopics = styled.Text`
+  color: ${({ theme }) => theme.fontsColor.primary};
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 50px;
+`;

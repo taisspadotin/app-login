@@ -1,4 +1,3 @@
-import { GestureResponderEvent } from "react-native";
 import { TextButton, Button as ButtonStyled } from "./styles";
 
 export type variantButton = "primary" | "secondary" | "outlined";
