@@ -14,4 +14,5 @@ export const TextInput = styled.TextInput<ITextInput>`
 
 export const Label = styled.Text`
   font-weight: 700;
+  color: ${({ theme }) => theme.fontsColor.primary};
 `;

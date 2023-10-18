@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components/native";
 import { variantButton } from ".";
 
-interface IButton {
+interface IProps {
   variant?: variantButton;
   marginTop?: number;
 }
-export const Button = styled.TouchableOpacity<IButton>`
+export const Button = styled.TouchableOpacity<IProps>`
   background-color: ${({ theme, variant }) =>
     variant === "outlined" ? theme.background : theme.mainColor.primary};
   width: 100%;
@@ -17,13 +17,14 @@ export const Button = styled.TouchableOpacity<IButton>`
   ${({ theme, variant }) =>
     variant === "outlined" &&
     css`
-      border: 1px solid ${theme.fontsColor.contrastColor};
+      border: 1px solid ${theme.fontsColor.contrastColor}66;
     `};
   margin-top: ${({ marginTop }) => marginTop ?? 0}px;
 `;
 
-export const TextButton = styled.Text`
-  color: ${({ theme }) => theme.fontsColor.mainColor};
+export const TextButton = styled.Text<IProps>`
+  color: ${({ theme, variant }) =>
+    variant === "primary" ? theme.fontsColor.main : theme.fontsColor.primary};
   font-weight: 800;
   font-size: 14px;
 `;

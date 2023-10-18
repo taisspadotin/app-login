@@ -1,19 +1,25 @@
 import { useState } from "react";
 import { Text } from "react-native";
-import { Container, MainLabel } from "./styles";
+import { Container, Label, LogoLabel, LogoWrapper, MainLabel } from "./styles";
 import { Button, FlexContainer, Input } from "../../components";
 
 export const Login = (): JSX.Element => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const onSubmit = () => {
+    //TODO: Validate errors
+  };
+
   return (
     <>
       <Container>
         <FlexContainer>
-          <Text>Logo</Text>
+          <LogoWrapper>
+            <LogoLabel>Logo</LogoLabel>
+          </LogoWrapper>
           <MainLabel>Bem-vindo ao{"\n"}Portal do Usuário</MainLabel>
-          <Text>Digite seus dados de acesso</Text>
+          <Label>Digite seus dados de acesso</Label>
         </FlexContainer>
         <FlexContainer>
           <Input
@@ -29,10 +35,17 @@ export const Login = (): JSX.Element => {
             secureTextEntry
             marginBottom={10}
           />
-          <Text>Esqueceu sua senha? Recuperar senha</Text>
+          <FlexContainer flexDirection="row">
+            <Label>Esqueceu sua senha? </Label>
+            <Label fontWeight={800}>Recuperar senha</Label>
+          </FlexContainer>
         </FlexContainer>
         <FlexContainer>
-          <Button label="Acessar" variant="primary" />
+          <Button
+            label="Acessar"
+            variant="primary"
+            onPress={() => onSubmit()}
+          />
           <Button label="Cadastrar-se" variant="outlined" marginTop={10} />
         </FlexContainer>
       </Container>
