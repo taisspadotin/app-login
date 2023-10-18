@@ -8,7 +8,7 @@ interface IButton {
 export const Button = styled.TouchableOpacity<IButton>`
   background-color: ${({ theme, variant }) =>
     variant === "outlined" ? theme.background : theme.mainColor.primary};
-  width: 90%;
+  width: 100%;
   height: 50px;
   border-radius: 4px;
   display: flex;
