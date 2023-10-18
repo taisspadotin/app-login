@@ -7,7 +7,7 @@ export const darkTheme = {
   },
   fontsColor: {
     primary: "#FFFFFF",
-    secondary: "#FFFFFF99",
+    secondary: "#FFFFFF66",
     contrastColor: "#FFFFFF",
     main: "#FFFFFF",
     error: "#ff001e",
@@ -23,7 +23,7 @@ export const lightTheme = {
   },
   fontsColor: {
     primary: "#2C2C2C",
-    secondary: "#2C2C2C99",
+    secondary: "#2C2C2C66",
     main: "#FFFFFF",
     contrastColor: "#2C2C2C",
     error: "#ff001e",

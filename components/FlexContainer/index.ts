@@ -8,6 +8,7 @@ interface IFlexContainer {
   justifyContent?: React.CSSProperties["justifyContent"];
   alignItems?: React.CSSProperties["alignItems"];
   flexDirection?: React.CSSProperties["flexDirection"];
+  minHeight?: number;
 }
 
 export const FlexContainer = styled.View<IFlexContainer>`
@@ -23,5 +24,10 @@ export const FlexContainer = styled.View<IFlexContainer>`
     flexDirection &&
     css`
       flex-direction: ${flexDirection};
+    `};
+  ${({ minHeight }) =>
+    minHeight &&
+    css`
+      min-height: ${minHeight}px;
     `};
 `;

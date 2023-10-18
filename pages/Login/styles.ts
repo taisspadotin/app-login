@@ -31,8 +31,9 @@ export const LogoLabel = styled.Text`
 
 interface ILabel {
   fontWeight?: number;
+  color?: React.CSSProperties["color"];
 }
 export const Label = styled.Text<ILabel>`
-  color: ${({ theme }) => theme.fontsColor.primary};
+  color: ${({ theme, color }) => color ?? theme.fontsColor.secondary};
   font-weight: ${({ fontWeight }) => fontWeight ?? 600};
 `;

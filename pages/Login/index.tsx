@@ -4,8 +4,10 @@ import { Container, Label, LogoLabel, LogoWrapper, MainLabel } from "./styles";
 import { Button, FlexContainer, Input } from "../../components";
 import { schemaLogin } from "../../helpers/login";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "styled-components/native";
 
 export const Login = (): JSX.Element => {
+  const theme = useTheme();
   const navigation = useNavigation();
 
   const [userName, setUserName] = useState("");
@@ -52,7 +54,7 @@ export const Login = (): JSX.Element => {
             <LogoLabel>Logo</LogoLabel>
           </LogoWrapper>
           <MainLabel>Bem-vindo ao{"\n"}Portal do Usuário</MainLabel>
-          <Label>Digite seus dados de acesso</Label>
+          <Label fontWeight={600}>Digite seus dados de acesso</Label>
         </FlexContainer>
         <FlexContainer>
           <Input
@@ -72,7 +74,9 @@ export const Login = (): JSX.Element => {
           />
           <FlexContainer flexDirection="row">
             <Label>Esqueceu sua senha? </Label>
-            <Label fontWeight={800}>Recuperar senha</Label>
+            <Label fontWeight={800} color={theme.fontsColor.primary}>
+              Recuperar senha
+            </Label>
           </FlexContainer>
         </FlexContainer>
         <FlexContainer>
