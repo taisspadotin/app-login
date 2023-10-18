@@ -9,10 +9,11 @@ interface IFlexContainer {
   alignItems?: React.CSSProperties["alignItems"];
   flexDirection?: React.CSSProperties["flexDirection"];
   minHeight?: number;
+  width?: React.CSSProperties["width"];
 }
 
 export const FlexContainer = styled.View<IFlexContainer>`
-  width: 100%;
+  width: ${({ width }) => width ?? "100%"};
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent ?? "flex-start"};
   align-items: ${({ alignItems }) => alignItems ?? "flex-start"};

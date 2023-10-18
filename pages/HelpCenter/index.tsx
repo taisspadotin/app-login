@@ -50,6 +50,8 @@ export const HelpCenter = (): JSX.Element => {
         value={searchedValue}
         onChange={setSearchedValue}
         placeholder="Pesquise aqui..."
+        iconName="search"
+        iconIsLeft
       />
 
       <PopularTopics>Tópicos populares</PopularTopics>

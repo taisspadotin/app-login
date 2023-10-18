@@ -13,6 +13,7 @@ export const Login = (): JSX.Element => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [viewPassword, setViewPassword] = useState(false);
 
   const validateFields = async () => {
     try {
@@ -68,9 +69,11 @@ export const Login = (): JSX.Element => {
             label="Senha"
             value={password}
             onChange={setPassword}
-            secureTextEntry
+            secureTextEntry={!viewPassword}
             marginBottom={10}
+            iconName={viewPassword ? "eye-off" : "eye"}
             error={errors?.password}
+            onClickIcon={() => setViewPassword(!viewPassword)}
           />
           <FlexContainer flexDirection="row">
             <Label>Esqueceu sua senha? </Label>
