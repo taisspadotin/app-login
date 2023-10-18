@@ -36,6 +36,7 @@ export const Input = ({
       {label && <Label>{label}</Label>}
       {iconName && (
         <IconContent
+          testID="input-icon"
           top={!!label ? 32 : 15}
           iconIsLeft={iconIsLeft}
           onPress={() => {

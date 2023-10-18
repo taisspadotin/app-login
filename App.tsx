@@ -1,5 +1,5 @@
 import { Login } from "./pages/Login";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 import { darkTheme, lightTheme } from "./themes";
 import { useColorScheme } from "nativewind";
 import { NavigationContainer } from "@react-navigation/native";

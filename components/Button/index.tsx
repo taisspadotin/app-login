@@ -17,6 +17,7 @@ export const Button = ({
 }: IButton): JSX.Element => {
   return (
     <ButtonStyled
+      testID="button"
       variant={variant}
       marginTop={marginTop}
       onPress={() => {
