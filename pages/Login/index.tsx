@@ -1,14 +1,47 @@
 import { useState } from "react";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 import { Container, Label, LogoLabel, LogoWrapper, MainLabel } from "./styles";
 import { Button, FlexContainer, Input } from "../../components";
+import { schemaLogin } from "../../helpers/login";
+import { useNavigation } from "@react-navigation/native";
 
 export const Login = (): JSX.Element => {
+  const navigation = useNavigation();
+
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
-  const onSubmit = () => {
-    //TODO: Validate errors
+  const validateFields = async () => {
+    try {
+      await schemaLogin.validate({ userName, password }, { abortEarly: false });
+    } catch (err) {
+      const validationErrors = {};
+      err.inner.forEach((error) => {
+        validationErrors[error.path] = error.message;
+      });
+      setErrors(validationErrors);
+      return false;
+    }
+    setErrors({});
+    return true;
+  };
+
+  const validateLogin = () => {
+    //mocked data for login
+    if (userName === "tester" && password === "tester123") return true;
+    else return false;
+  };
+
+  const onSubmit = async () => {
+    if (await validateFields()) {
+      if (validateLogin()) {
+        //TODO: Protect routes
+        navigation.navigate("HelpCenter");
+      } else {
+        Alert.alert("Nome de usuário ou senha incorretos!");
+      }
+    }
   };
 
   return (
@@ -27,6 +60,7 @@ export const Login = (): JSX.Element => {
             value={userName}
             onChange={setUserName}
             marginBottom={10}
+            error={errors?.userName}
           />
           <Input
             label="Senha"
@@ -34,6 +68,7 @@ export const Login = (): JSX.Element => {
             onChange={setPassword}
             secureTextEntry
             marginBottom={10}
+            error={errors?.password}
           />
           <FlexContainer flexDirection="row">
             <Label>Esqueceu sua senha? </Label>
