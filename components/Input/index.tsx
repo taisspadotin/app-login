@@ -57,6 +57,7 @@ export const Input = ({
         paddingLeft={iconName && iconIsLeft ? 35 : 5}
         onChangeText={onChange}
         placeholder={placeholder}
+        placeholderTextColor={theme.fontsColor.secondary}
       />
       {error && (
         <Label isError marginBottom={marginBottom}>

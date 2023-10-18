@@ -10,19 +10,32 @@ const Stack = createStackNavigator();
 
 const App = (): JSX.Element => {
   const scheme = useColorScheme();
+  const currentTheme = scheme?.colorScheme === "dark" ? darkTheme : lightTheme;
+
   return (
-    <ThemeProvider theme={scheme === "dark" ? darkTheme : lightTheme}>
+    <ThemeProvider theme={currentTheme}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Login"
             component={Login}
-            options={{ title: "" }}
+            options={{
+              title: "",
+              headerStyle: {
+                backgroundColor: currentTheme.background,
+              },
+            }}
           />
           <Stack.Screen
             name="HelpCenter"
             component={HelpCenter}
-            options={{ title: "Central de ajuda" }}
+            options={{
+              title: "Central de ajuda",
+              headerStyle: {
+                backgroundColor: currentTheme.background,
+              },
+              headerTintColor: currentTheme.colorPrimary,
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

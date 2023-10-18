@@ -14,6 +14,7 @@ export const TextInput = styled.TextInput<ITextInput>`
   margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}px;
   margin-top: ${({ marginTop }) => marginTop ?? 4}px;
   padding-left: ${({ paddingLeft }) => paddingLeft ?? 5}px;
+  color: ${({ theme }) => theme.fontsColor.primary};
 `;
 
 interface ILabel {
