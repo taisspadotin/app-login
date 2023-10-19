@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, Text } from "react-native";
+import { Alert } from "react-native";
 import {
   Container,
   Label,
@@ -46,7 +46,6 @@ export const Login = (): JSX.Element => {
   const onSubmit = async () => {
     if (await validateFields()) {
       if (validateLogin()) {
-        //TODO: Protect routes
         navigation.navigate("HelpCenter");
       } else {
         Alert.alert("Nome de usuário ou senha incorretos!");
