@@ -7,7 +7,7 @@ export const Container = styled.View`
   justify-content: space-around;
   display: flex;
   padding: 30px;
-  min-height: 600px;
+  min-height: 660px;
 `;
 
 export const MainLabel = styled.Text`
@@ -36,4 +36,10 @@ interface ILabel {
 export const Label = styled.Text<ILabel>`
   color: ${({ theme, color }) => color ?? theme.fontsColor.secondary};
   font-weight: ${({ fontWeight }) => fontWeight ?? 600};
+`;
+
+export const ScrollView = styled.ScrollView`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.background};
 `;
